@@ -34,7 +34,7 @@ def get_html_content(url: str) -> BeautifulSoup:
     return soup
 
 
-def scrape_github_searching_webpage(
+def save_html_content_of_github_searching_webpage(
         urls: List[str], 
         path: str,
         last_page_count: int,
@@ -93,7 +93,7 @@ def scrape_github_searching_webpage(
                 print(f"File '{file_name}' saved successfully.")
 
 
-def scrape_github_user_profile(
+def save_html_content_of_github_user_profile(
         usernames: List[str], 
         path: str,
         initial_waiting_time: float = 3,
@@ -106,7 +106,7 @@ def scrape_github_user_profile(
     Afterthat storingall content in an HTML file.
 
     Args:
-        usernames (List[str]): _description_
+        usernames (List[str]): usernames list of available github users.
         path (str): _description_
         initial_waiting_time (float, optional): _description_. Defaults to 3.
         inspect_waiting_time (float, optional): _description_. Defaults to 3.
@@ -303,10 +303,11 @@ def  user_profile_html_files_to_csv(
             print(f"{file_no+1}) {user_file} - extract successfully")
 
 
-
+    # returning the Data Frame that contain whole information of all users(avilable in the suitable folder)
     return df
         
 
 
 if __name__ == "__main__":
+    # Testing
     print(user_profile_html_files_to_csv("E:\\Python\\Data Collection\\Users", end_at_file=6, file_starting_no=4))
