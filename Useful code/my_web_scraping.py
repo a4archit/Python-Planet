@@ -34,7 +34,7 @@ def get_html_content(url: str) -> BeautifulSoup:
     return soup
 
 
-def save_html_content_of_github_searching_webpage(
+def scrape_github_searching_webpage(
         urls: List[str], 
         path: str,
         last_page_count: int,
@@ -93,9 +93,10 @@ def save_html_content_of_github_searching_webpage(
                 print(f"File '{file_name}' saved successfully.")
 
 
-def save_html_content_of_github_user_profile(
+def scrape_github_user_profile(
         usernames: List[str], 
         path: str,
+        count: int = 1,
         initial_waiting_time: float = 3,
         inspect_waiting_time: float = 3,
         tab_closing_waiting_time: float = 1,
@@ -106,7 +107,7 @@ def save_html_content_of_github_user_profile(
     Afterthat storingall content in an HTML file.
 
     Args:
-        usernames (List[str]): usernames list of available github users.
+        usernames (List[str]): _description_
         path (str): _description_
         initial_waiting_time (float, optional): _description_. Defaults to 3.
         inspect_waiting_time (float, optional): _description_. Defaults to 3.
@@ -117,7 +118,7 @@ def save_html_content_of_github_user_profile(
     sleep(initial_waiting_time) # waiting before execution of main code given (n-seconds) 
 
     # loop for each webpage in given pages range
-    for user_no, username in enumerate(usernames):
+    for username in usernames:
         # updating the url page number
         url = f"https://github.com/{username}"
 
@@ -137,7 +138,7 @@ def save_html_content_of_github_user_profile(
         # extracting the copied HTML content as string
         content = pyperclip.paste()
         # generating file name
-        file_name = f"User {user_no+1} {username}"
+        file_name = f"User {count} {username}"
 
         # saving webpage content as a HTML file
         with open(f"{path}\\{file_name}.html", 'w', encoding='utf-8') as f:
@@ -145,6 +146,8 @@ def save_html_content_of_github_user_profile(
 
         if (verbose):
             print(f"File '{file_name}' saved successfully.")
+
+        count += 1
 
 
 
@@ -167,7 +170,7 @@ def  user_profile_html_files_to_csv(
 
     # creating an empty dataframe with suitable schema
     df = pd.DataFrame(columns=['username','gender_pronoun','followings','joining_year','last_year_contributions',
-                               'achievements_num', 'email','social_link','social_platform'])
+                               'achievements_num','stars','has_readme', 'email','social_link','social_platform'])
         
 
     # list of all HTML files
@@ -179,6 +182,8 @@ def  user_profile_html_files_to_csv(
         return None
 
     file_no = file_starting_no-1
+
+    dfs = []
 
     # iteration for all users files
     for user_file in all_files:
@@ -223,10 +228,13 @@ def  user_profile_html_files_to_csv(
             joining_year = int(soup.find_all('a', class_='js-year-link')[-1].text.strip())
 
             # extracting followings
-            user_followings = soup.find('a', class_="Link--secondary no-underline no-wrap").find('span').text
+            user_followings = soup.find_all('a', class_="Link--secondary no-underline no-wrap")[-1].find('span').text.strip()
 
         except AttributeError:
             print(f"Error in file: {user_file}")
+            continue
+        except IndexError:
+            print(f"Index Error in file: {user_file}")
             continue
         
         # extracting user's status
@@ -240,6 +248,12 @@ def  user_profile_html_files_to_csv(
             gender_pronoun = info_box.find('span', itemprop='pronouns').text.replace("\n",'')
         except AttributeError:
             gender_pronoun = np.nan
+
+        # extracting works for (organization)
+        try:
+            works_for = info_box.find('li', itemprop='worksFor').find('span').text.strip()
+        except AttributeError:
+            works_for = np.nan
 
         # extracting email
         try:
@@ -277,6 +291,33 @@ def  user_profile_html_files_to_csv(
         except AttributeError: 
             # if user has no achievement yet
             achievements_num = 0
+
+        # extracting nnumber of stars(number of stars)
+        try:
+            stars = soup.find('a', id='stars-tab').find('span', class_='Counter').text.strip()
+        except AttributeError:
+            stars = np.nan
+
+        # extracting - Is user have its profile README.md file or not ?
+        try:
+            if(soup.find('div', class_="text-mono text-small mb-3").find('span').text != None):
+                has_readme = True
+        except AttributeError:
+            has_readme = False
+
+        # extracting email from README.md file if:
+        # 1. email not found in 'vcard-details'
+        # 2. README.md is available
+        if (email == np.nan and has_readme == True):
+            try:
+                readme_content = soup.find('article', class_='markdown-body', itemprop='text').text
+                readme_content_words_list = readme_content.split(' ')
+                print(readme_content)
+                for word in readme_content_words_list:
+                    if "@" in word and ".com" in word:
+                        email = word
+            except AttributeError:
+                email = np.nan
             
         # ------------------ Updating values -------------
         usernames.append(username)
@@ -289,6 +330,9 @@ def  user_profile_html_files_to_csv(
             'joining_year':joining_year,
             'last_year_contributions':last_year_contribution, 
             'achievements_num':achievements_num,
+            'stars':stars,
+            'has_readme': has_readme,
+            'works_for': works_for,
             'email':email,
             'social_link':social_link,
             'social_platform': social_platform,
@@ -301,13 +345,16 @@ def  user_profile_html_files_to_csv(
 
         if (verbose):
             print(f"{file_no+1}) {user_file} - extract successfully")
+        
+        if (file_starting_no%1000 == 0):
+            dfs.append(df)
 
 
-    # returning the Data Frame that contain whole information of all users(avilable in the suitable folder)
-    return df
+
+    return dfs
         
 
 
 if __name__ == "__main__":
-    # Testing
+    #  Test use
     print(user_profile_html_files_to_csv("E:\\Python\\Data Collection\\Users", end_at_file=6, file_starting_no=4))
