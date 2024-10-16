@@ -95,8 +95,9 @@ def scrape_github_searching_webpage(
 
 def scrape_github_user_profile(
         usernames: List[str], 
-        path: str,
+        path: str = 'none',
         count: int = 1,
+        method: Literal['save','return'] = 'return',
         initial_waiting_time: float = 3,
         inspect_waiting_time: float = 3,
         tab_closing_waiting_time: float = 1,
@@ -127,7 +128,7 @@ def scrape_github_user_profile(
         # openning inspect element of suitable webpage
         pg.hotkey('ctrl','shift','i')
         # waiting for inspect element to open
-        sleep(inspect_waiting_time)
+        sleep(inspect_waiting_time  )
         # copy the all body tag HTML
         pg.hotkey('ctrl','c')
         # exiting the tab
@@ -137,41 +138,209 @@ def scrape_github_user_profile(
 
         # extracting the copied HTML content as string
         content = pyperclip.paste()
-        # generating file name
-        file_name = f"User {count} {username}"
 
-        # saving webpage content as a HTML file
-        with open(f"{path}\\{file_name}.html", 'w', encoding='utf-8') as f:
-            f.write(content)
+        if method == 'save':
+            # generating file name
+            file_name = f"User {count} {username}"
+            # saving webpage content as a HTML file
+            with open(f"{path}\\{file_name}.html", 'w', encoding='utf-8') as f:
+                f.write(content)
+            if (verbose):
+                print(f"File '{file_name}' saved successfully.")
 
-        if (verbose):
-            print(f"File '{file_name}' saved successfully.")
+        elif method == 'return':
+            return content
+        
+        else:
+            print(f"Invalid method[{method}]")
 
         count += 1
 
 
-
-def  user_profile_html_files_to_csv(
-        folder_path: str, 
-        end_at_file: int, 
-        file_starting_no: int, 
-        verbose: bool = True
+def get_values_from_user_profile(
+        content: str
     ) -> pd.DataFrame:
 
+    """
+    Returns the pandas dataframe
+    """ 
+
+    # parsing the HTML content using BeautifulSoup
+    soup = BeautifulSoup(content, 'lxml')
+
+    # # declaring lists for storing user wise data
+    usernames = []
+
+    # --------------------------------------- Extracting values -------------------------------------------------------
+    
+    # initialising variables that useful in this section only
+    char_to_remove: str = ",./\n\\- "
+
+    # extracting the whole sidebar information in a single element
+    info_box = soup.find('div',class_="js-profile-editable-replace")
+
+    try:
+        # extracting username
+        username = soup.find('span',class_='vcard-username').text.strip().split('\n')[0].replace('\r','')
+
+        # extracting number of conributions of last year
+        last_year_contribution = soup.find('h2', class_='f4 text-normal mb-2').text.strip().split(' ')[0]
+        last_year_contribution = int(re.sub(f"[{char_to_remove}]", "", last_year_contribution))
+
+        # extracting joining year
+        joining_year = int(soup.find_all('a', class_='js-year-link')[-1].text.strip())
+
+        # extracting followings
+        user_followings = soup.find_all('a', class_="Link--secondary no-underline no-wrap")[-1].find('span').text.strip()
+
+    except AttributeError:
+        print(f"Attribute error occurs.")
+        return None
+
+    except IndexError:
+        print(f"Index Error occurs.")
+        return None
+    
+    # extracting user's status
+    try:
+        status = info_box.find('div', class_="user-status-message-wrapper").text.strip()
+    except AttributeError:
+        status = np.nan
+
+    # extracting user gender pronoun
+    try:
+        gender_pronoun = info_box.find('span', itemprop='pronouns').text.replace("\n",'')
+    except AttributeError:
+        gender_pronoun = np.nan
+
+    # extracting works for (organization)
+    try:
+        works_for = info_box.find('li', itemprop='worksFor').find('span').text.strip()
+    except AttributeError:
+        works_for = np.nan
+
+    # extracting email
+    try:
+        email = soup.find('li', itemprop='email').text.replace("\n",'')
+    except AttributeError:
+        email = np.nan
+
+    # extracting url
+    try:
+        social_link = soup.find('li', itemprop='url').text.replace("\n",'')
+    except AttributeError:
+        social_link = np.nan
+    
+    # extracting social platform
+    try:
+        social_platform = soup.find('li', itemprop='social').text.replace("\n",'')
+    except AttributeError:
+        social_platform = np.nan
+    
+    # finding total number of achievements
+    try:
+        achievement_box = info_box.find_all('a', class_="position-relative")
+        achievements_num = 0
+        # iteration for each achievement badge
+        for achievement_anchor in achievement_box[:int(len(achievement_box)/2)]:
+            achievement_cardinality = 1
+            try:
+                times = achievement_anchor.find('span').text
+                times = int([*times][-1])
+            except AttributeError:
+                times = 1
+            # updating total number of achievements
+            achievements_num += achievement_cardinality * times
+
+    except AttributeError: 
+        # if user has no achievement yet
+        achievements_num = 0
+
+    # extracting nnumber of stars(number of stars)
+    try:
+        stars = soup.find('a', id='stars-tab').find('span', class_='Counter').text.strip()
+    except AttributeError:
+        stars = np.nan
+
+    # extracting - Is user have its profile README.md file or not ?
+    try:
+        if(soup.find('div', class_="text-mono text-small mb-3").find('span').text != None):
+            has_readme = True
+    except AttributeError:
+        has_readme = False
+
+    # extracting email from README.md file if:
+    # 1. email not found in 'vcard-details'
+    # 2. README.md is available
+    if (email == np.nan and has_readme == True):
+        try:
+            readme_content = soup.find('article', class_='markdown-body', itemprop='text').text
+            readme_content_words_list = readme_content.split(' ')
+            print(readme_content)
+            for word in readme_content_words_list:
+                if "@" in word and ".com" in word:
+                    email = word
+        except AttributeError:
+            email = np.nan
+        
+    # ------------------ Updating values -------------
+    usernames.append(username)
+
+
+    data = {
+        'username':usernames,
+        'gender_pronoun':gender_pronoun,
+        'followings':user_followings,
+        'joining_year':joining_year,
+        'last_year_contributions':last_year_contribution, 
+        'achievements_num':achievements_num,
+        'stars':stars,
+        'has_readme': has_readme,
+        'works_for': works_for,
+        'email':email,
+        'social_link':social_link,
+        'social_platform': social_platform,
+        'status': status
+    }
+
+    
+    df = pd.DataFrame(data)
+
+    return df
+
+
+def  user_profile_html_files_to_csv(
+        folder_path: str = None, 
+        end_at_file: int = 1, 
+        file_starting_no: int = 1, 
+        verbose: bool = True,
+        method: Literal['file','content'] = 'file'
+    ) -> pd.DataFrame:
     """_summary_
 
     Args:
-        folder_path (str): _description_
-        verbose (bool): _descripton_
+        folder_path (str, optional): Path of the desired folder. Defaults to None.
+        end_at_file (int, optional): _description_. Defaults to 1.
+        file_starting_no (int, optional): _description_. Defaults to 1.
+        verbose (bool, optional): _description_. Defaults to True.
+        method (Literal[&#39;file&#39;,&#39;content&#39;], optional): _description_. Defaults to 'file'.
+
+    Raises:
+        ValueError: _description_
 
     Returns:
         pd.DataFrame: _description_
     """
 
+    if folder_path == None and method == 'file':
+        raise ValueError("You must be provide a folder path when you choosing (method = 'file')")
+
     # creating an empty dataframe with suitable schema
     df = pd.DataFrame(columns=['username','gender_pronoun','followings','joining_year','last_year_contributions',
                                'achievements_num','stars','has_readme', 'email','social_link','social_platform'])
         
+    # creating an empty dataframe with suitable schema
+    temp_df = pd.DataFrame(columns=df.columns)
 
     # list of all HTML files
     all_files = listdir(folder_path)
@@ -188,173 +357,69 @@ def  user_profile_html_files_to_csv(
     # iteration for all users files
     for user_file in all_files:
 
-        # increment in file number
-        file_no += 1
 
-        if file_no == end_at_file:
-            break
-
-        # creating an empty dataframe with suitable schema
-        temp_df = pd.DataFrame(columns=df.columns)
-        # initialising file path
-        file_path = f"{folder_path}\\{user_file}"
-        # extracting HTML content into string format
-        with open(file_path, 'r', encoding='utf-8') as file_data:
-            content = file_data.read()
-
-        # parsing the HTML content using BeautifulSoup
-        soup = BeautifulSoup(content, 'lxml')
-
-        # # declaring lists for storing user wise data
-        usernames = []
-
-        # --------------------------------------- Extracting values -------------------------------------------------------
-        
-        # initialising variables that useful in this section only
-        char_to_remove: str = ",./\n\\- "
-
-        # extracting the whole sidebar information in a single element
-        info_box = soup.find('div',class_="js-profile-editable-replace")
-
-        try:
-            # extracting username
-            username = soup.find('span',class_='vcard-username').text.strip().split('\n')[0]
-
-            # extracting number of conributions of last year
-            last_year_contribution = soup.find('h2', class_='f4 text-normal mb-2').text.strip().split(' ')[0]
-            last_year_contribution = int(re.sub(f"[{char_to_remove}]", "", last_year_contribution))
-
-            # extracting joining year
-            joining_year = int(soup.find_all('a', class_='js-year-link')[-1].text.strip())
-
-            # extracting followings
-            user_followings = soup.find_all('a', class_="Link--secondary no-underline no-wrap")[-1].find('span').text.strip()
-
-        except AttributeError:
-            print(f"Error in file: {user_file}")
-            continue
-        except IndexError:
-            print(f"Index Error in file: {user_file}")
-            continue
-        
-        # extracting user's status
-        try:
-            status = info_box.find('div', class_="user-status-message-wrapper").text.strip()
-        except AttributeError:
-            status = np.nan
-
-        # extracting user gender pronoun
-        try:
-            gender_pronoun = info_box.find('span', itemprop='pronouns').text.replace("\n",'')
-        except AttributeError:
-            gender_pronoun = np.nan
-
-        # extracting works for (organization)
-        try:
-            works_for = info_box.find('li', itemprop='worksFor').find('span').text.strip()
-        except AttributeError:
-            works_for = np.nan
-
-        # extracting email
-        try:
-            email = soup.find('li', itemprop='email').text.replace("\n",'')
-        except AttributeError:
-            email = np.nan
-
-        # extracting url
-        try:
-            social_link = soup.find('li', itemprop='url').text.replace("\n",'')
-        except AttributeError:
-            social_link = np.nan
-        
-        # extracting social platform
-        try:
-            social_platform = soup.find('li', itemprop='social').text.replace("\n",'')
-        except AttributeError:
-            social_platform = np.nan
-        
-        # finding total number of achievements
-        try:
-            achievement_box = info_box.find_all('a', class_="position-relative")
-            achievements_num = 0
-            # iteration for each achievement badge
-            for achievement_anchor in achievement_box[:int(len(achievement_box)/2)]:
-                achievement_cardinality = 1
-                try:
-                    times = achievement_anchor.find('span').text
-                    times = int([*times][-1])
-                except AttributeError:
-                    times = 1
-                # updating total number of achievements
-                achievements_num += achievement_cardinality * times
-
-        except AttributeError: 
-            # if user has no achievement yet
-            achievements_num = 0
-
-        # extracting nnumber of stars(number of stars)
-        try:
-            stars = soup.find('a', id='stars-tab').find('span', class_='Counter').text.strip()
-        except AttributeError:
-            stars = np.nan
-
-        # extracting - Is user have its profile README.md file or not ?
-        try:
-            if(soup.find('div', class_="text-mono text-small mb-3").find('span').text != None):
-                has_readme = True
-        except AttributeError:
-            has_readme = False
-
-        # extracting email from README.md file if:
-        # 1. email not found in 'vcard-details'
-        # 2. README.md is available
-        if (email == np.nan and has_readme == True):
-            try:
-                readme_content = soup.find('article', class_='markdown-body', itemprop='text').text
-                readme_content_words_list = readme_content.split(' ')
-                print(readme_content)
-                for word in readme_content_words_list:
-                    if "@" in word and ".com" in word:
-                        email = word
-            except AttributeError:
-                email = np.nan
-            
-        # ------------------ Updating values -------------
-        usernames.append(username)
-
-
-        data = {
-            'username':usernames,
-            'gender_pronoun':gender_pronoun,
-            'followings':user_followings,
-            'joining_year':joining_year,
-            'last_year_contributions':last_year_contribution, 
-            'achievements_num':achievements_num,
-            'stars':stars,
-            'has_readme': has_readme,
-            'works_for': works_for,
-            'email':email,
-            'social_link':social_link,
-            'social_platform': social_platform,
-            'status': status
-        }
-
-        
-        temp_df = pd.DataFrame(data)
         df = pd.concat([df,temp_df], ignore_index=True) 
 
         if (verbose):
             print(f"{file_no+1}) {user_file} - extract successfully")
+            
         
-        if (file_starting_no%1000 == 0):
-            dfs.append(df)
-
-
+    dfs.append(df)
 
     return dfs
         
 
+def get_github_users_profile_dataframe(
+        usernames: List[str],
+        temp_csv: str,
+        save: bool = False,
+        files_num: int = 100,
+        verbose: bool = True,
+        inspect_waiting_time: float = 3
+    ) -> pd.DataFrame:
+    """_summary_
+
+    Args:
+        usernames (List[str]): _description_
+        temp_csv (str): _description_
+        save (bool, optional): _description_. Defaults to False.
+        files_num (int, optional): _description_. Defaults to 100.
+        verbose (bool, optional): _description_. Defaults to True.
+
+    Returns:
+        pd.DataFrame: _description_
+    """
+
+    df = pd.DataFrame()
+    for count, username in enumerate(usernames, start=1):
+        if verbose:
+            print(f"{count} -> {username} : ", end="")
+
+        if (count%100 == 0 or count == len(usernames)) and save == True:
+            try:
+                file_df = pd.read_csv(temp_csv)
+            except:
+                file_df = pd.DataFrame()
+            file_df = pd.concat([file_df, df], ignore_index=True)
+            file_df.to_csv(file_df, index=False)
+
+        html_content = scrape_github_user_profile([username], method='return', inspect_waiting_time=inspect_waiting_time)
+        temp_df = get_values_from_user_profile(html_content)
+
+        if type(temp_df) != pd.core.frame.DataFrame:
+            continue
+
+        df = pd.concat([df, temp_df], ignore_index=True)
+        print("Successfull")
+
+    if save == False:
+        return df
+    
+
+
+
 
 if __name__ == "__main__":
-    #  Test use
-    print(user_profile_html_files_to_csv("E:\\Python\\Data Collection\\Users", end_at_file=6, file_starting_no=4))
+    # print(user_profile_html_files_to_csv("E:\\Python\\Data Collection\\Users", end_at_file=6, file_starting_no=4))
+    get_github_users_profile_dataframe(['V-PRAMOD-REDDY', 'manurajtm7', 'Melto007'][1:])
+
