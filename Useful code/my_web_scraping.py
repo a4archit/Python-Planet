@@ -181,25 +181,32 @@ def get_values_from_user_profile(
 
     try:
         # extracting username
-        username = soup.find('span',class_='vcard-username').text.strip().split('\n')[0].replace('\r','')
-
-        # extracting number of conributions of last year
+        username = soup.find('span',class_='vcard-username').text
+        username = username.strip()
+        username = username.split('\n')[0]
+        username = username.replace('\r','')
+    except AttributeError:
+        username = np.nan
+    
+    # extracting number of conributions of last year
+    try:
         last_year_contribution = soup.find('h2', class_='f4 text-normal mb-2').text.strip().split(' ')[0]
         last_year_contribution = int(re.sub(f"[{char_to_remove}]", "", last_year_contribution))
+    except:
+        last_year_contribution = np.nan
 
-        # extracting joining year
+    # extracting joining year
+    try:
         joining_year = int(soup.find_all('a', class_='js-year-link')[-1].text.strip())
-
-        # extracting followings
+    except Exception as e:
+        print(f"Error [{username}]: {e}")
+        joining_year = np.nan
+    
+    # extracting followings
+    try:
         user_followings = soup.find_all('a', class_="Link--secondary no-underline no-wrap")[-1].find('span').text.strip()
-
-    except AttributeError:
-        print(f"Attribute error occurs.")
-        return None
-
     except IndexError:
-        print(f"Index Error occurs.")
-        return None
+        user_followings = np.nan
     
     # extracting user's status
     try:
@@ -371,19 +378,24 @@ def  user_profile_html_files_to_csv(
 
 def get_github_users_profile_dataframe(
         usernames: List[str],
-        temp_csv: str,
+        file_name: str = 'Temporary.csv',
         save: bool = False,
         files_num: int = 100,
-        verbose: bool = True,
-        inspect_waiting_time: float = 3
+        tab_closing_time: float = 1,
+        initial_waiting_time: float = 3,
+        inspect_waiting_time: float = 3,
+        verbose: bool = True
     ) -> pd.DataFrame:
     """_summary_
 
     Args:
         usernames (List[str]): _description_
-        temp_csv (str): _description_
+        file_name (str, optional): _description_. Defaults to 'Temporary.csv'.
         save (bool, optional): _description_. Defaults to False.
         files_num (int, optional): _description_. Defaults to 100.
+        tab_closing_time (float, optional): _description_. Defaults to 1.
+        initial_waiting_time (float, optional): _description_. Defaults to 3.
+        inspect_waiting_time (float, optional): _description_. Defaults to 3.
         verbose (bool, optional): _description_. Defaults to True.
 
     Returns:
@@ -393,23 +405,25 @@ def get_github_users_profile_dataframe(
     df = pd.DataFrame()
     for count, username in enumerate(usernames, start=1):
         if verbose:
-            print(f"{count} -> {username} : ", end="")
+            print(f"{count:<3} -> {username:^30} : ", end="")
 
-        if (count%100 == 0 or count == len(usernames)) and save == True:
-            try:
-                file_df = pd.read_csv(temp_csv)
-            except:
-                file_df = pd.DataFrame()
-            file_df = pd.concat([file_df, df], ignore_index=True)
-            file_df.to_csv(file_df, index=False)
-
-        html_content = scrape_github_user_profile([username], method='return', inspect_waiting_time=inspect_waiting_time)
+        html_content = scrape_github_user_profile([username], 
+                                                  method='return', 
+                                                  inspect_waiting_time=inspect_waiting_time,
+                                                  initial_waiting_time=initial_waiting_time,
+                                                  tab_closing_waiting_time=tab_closing_time
+        )
+        
         temp_df = get_values_from_user_profile(html_content)
 
         if type(temp_df) != pd.core.frame.DataFrame:
             continue
 
         df = pd.concat([df, temp_df], ignore_index=True)
+
+        if save:
+            df.to_csv(file_name, index=False)
+
         print("Successfull")
 
     if save == False:
