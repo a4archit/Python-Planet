@@ -3,8 +3,12 @@ import random
 
 class TicTacToe:
     
-    def __init__(self):
+    def __init__(self, mode: str):
+        player2 = 'comp' if mode == 'comp' else 'user'
         self.matrix = np.full((3,3), None)
+        self.player1_chance = 0
+        self.player2_chance = 0
+        self.total_chances = self.player1_chance + self.player2_chance
         
     def display(self):
         print()
@@ -29,18 +33,41 @@ class TicTacToe:
             processed_indices.append((indices[0][i], indices[1][i]))
         return processed_indices
         
-    def check_winning(self):
-        check_winning_rows_()
+    def check_winner(self):
+        winning_possibilities = ['rows', 'columns', 'diagnols']
+        for winning_possibility in winning_possibilities:
+            winner = self.check_winning_(winning_possibility)
+            if winner is not None:
+                break
+        return winner      
+        
         
     def check_winning_(self, action_on: str) -> str:
         match(action_on):
             case 'rows':
                 for row in self.matrix:
-                    if""
+                    msg = ('p1' if row.all() == 1 else 
+                          'p2' if row.all() == 0 else None)
+                    break
+                return msg
+                
             case 'columns':
-                pass
+                for col_index in range(self.matrix.shape[1]):
+                    column = self.matrix[:,col_index]
+                    msg = ('p1' if column.all() == 1 else 
+                          'p2' if column.all() == 0 else None)
+                    break
+                return msg
+                
             case 'diagnols':
-                pass
+                msg = ('p1' if np.diag(self.matrix).all() == 1 else
+                      'p2' if np.diag(self.matrix).all() == 0 else None)
+                
+                if msg == 'None':
+                    msg = ('p1' if np.diag(np.fliplr(self.matrix)).all() == 1 else
+                          'p2' if np.diag(np.fliplr(self.matrix)).all() == 0 else None)
+                return msg
+                
             case _ :
                 raise('Invalid value of \'action_on\'')
     
@@ -54,7 +81,7 @@ def clean_user_choice(user_choice):
 
 if __name__ == "__main__":
     
-    game = TicTacToe()
+    game = TicTacToe(mode='comp')
     
     while True:
         game.display()
@@ -65,6 +92,7 @@ if __name__ == "__main__":
         computer_choice = random.choice(blank_indices)
         r2, c2 = computer_choice
         game.set_value(2, r2, c2)
+        print("winner -> ", game.check_winner())
         
 
 
