@@ -8,3 +8,5 @@ I will share my Python codes on the behalf of daily basis.
 
 [Java QB](https://drive.google.com/file/d/13rDeWHfey0IGf0sB5xZWzQuTof0-FiyI/view?usp=drivesdk)
 
+[OS QB](https://sites.google.com/view/sachin-iimt/subject/operating-system)
+
