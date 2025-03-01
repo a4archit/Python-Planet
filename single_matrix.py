@@ -28,7 +28,7 @@ Example:\n
 inputs = st.text_area(
     "Input matrix",
     height=5,
-    placeholder="Enter your matrix here"
+    placeholder="Enter your matrix here..."
 )
 
 
