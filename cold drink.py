@@ -1,3 +1,7 @@
+# I was code this program in my starting python learning phase.
+
+
+
 import time
 import random
 
