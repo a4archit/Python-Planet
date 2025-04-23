@@ -68,7 +68,8 @@ class TableOfAnyNumber:
 
 # testing
 if __name__ == "__main__":
-   
+
+   # calling main function
    TableOfAnyNumber()
    
 
