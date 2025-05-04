@@ -6,6 +6,12 @@ I will share my Python codes on the behalf of daily basis.
 # My Notes
 [Neural Network & Deep Learning](https://drive.google.com/file/d/1O3FolOG9-7mhQzWOWviUbslEywLYGmVj/view?usp=drivesdk)
 
+[Machine Learning]
+
+[Python]
+
+[Java]
+
 
 
 
