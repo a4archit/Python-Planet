@@ -31,9 +31,13 @@ I will share my Python codes on the behalf of daily basis.
 
 ### SEM-4
 [Python]()
-[Data Mining](https://docs.google.com/document/d/1JC48CA6HI62VqV5GiC3Jb7OYPGPd8i6H/edit?usp=drive_link&ouid=117485472985865708833&rtpof=true&sd=true)
-[Software Engineering](https://docs.google.com/document/d/1uownH_GXyrQ2N7DXEGmKdGaHYol9oFH1/edit?usp=drive_link&ouid=117485472985865708833&rtpof=true&sd=true)
-[Human Values & Professional Ethics](https://docs.google.com/document/d/1Arudk-W7opDReSHKDESWn9nwBtxt-Wrq/edit?usp=drive_link&ouid=117485472985865708833&rtpof=true&sd=true)
-[Advertising and Public Relations](https://docs.google.com/document/d/1HlCeE-YBH_IVjZ-q8nswRpq5KJ5qhCPG/edit?usp=drive_link&ouid=117485472985865708833&rtpof=true&sd=true)
+
+[Data Mining](https://docs.google.com/document/d/1JC48CA6HI62VqV5GiC3Jb7OYPGPd8i6H/edit?usp=sharing&ouid=117485472985865708833&rtpof=true&sd=true)
+
+[Software Engineering](https://docs.google.com/document/d/1HlCeE-YBH_IVjZ-q8nswRpq5KJ5qhCPG/edit?usp=sharing&ouid=117485472985865708833&rtpof=true&sd=true)
+
+[Human Values & Professional Ethics](https://docs.google.com/document/d/1Arudk-W7opDReSHKDESWn9nwBtxt-Wrq/edit?usp=sharing&ouid=117485472985865708833&rtpof=true&sd=true)
+
+[Advertising and Public Relations](https://docs.google.com/document/d/1HlCeE-YBH_IVjZ-q8nswRpq5KJ5qhCPG/edit?usp=sharing&ouid=117485472985865708833&rtpof=true&sd=true)
 
 
