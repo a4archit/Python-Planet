@@ -30,7 +30,7 @@ I will share my Python codes on the behalf of daily basis.
 
 
 ### SEM-4
-[Python]()
+[Python](https://docs.google.com/document/d/1FZectIK9wtsDzaw-7R25XKn_6iQYJL_q/edit?usp=sharing&ouid=117485472985865708833&rtpof=true&sd=true)
 
 [Data Mining](https://docs.google.com/document/d/1JC48CA6HI62VqV5GiC3Jb7OYPGPd8i6H/edit?usp=sharing&ouid=117485472985865708833&rtpof=true&sd=true)
 
