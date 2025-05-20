@@ -1,6 +1,8 @@
 import numpy as np
 import random 
 
+
+# main class
 class TicTacToe:
     
     def __init__(self, mode: str):
