@@ -6,9 +6,17 @@ An amazing Game for small study break, full of joy.
 
 """
 
+
+
+
 # import neccessary modules/functions
 from typing import List
 from random import randint
+
+
+
+
+
 
 # some useful variables
 general_instructions: str = '''
@@ -21,7 +29,15 @@ General Instructions:
     -> Lesser the number of chances attempted demonstrate the Player winning quality.
     -> Enter 'exit' for closing the Game.
 '''
+
+
+
 initial_text: str = f"Welcome in Perfect Guessing Game (0.0.1)\n {general_instructions}"
+
+
+
+
+
 
 def get_user_input(text: str, value_options: List[str | int] = ['y','n']) -> str:
     """ Return an element from value_options list after taking from user. """
@@ -36,6 +52,12 @@ def get_user_input(text: str, value_options: List[str | int] = ['y','n']) -> str
         if user in value_options:
             return user
         print(f"Invalid value: [{user}]\n\nValue must be from the given list -> {value_options}")
+
+
+
+
+
+
 
 def perfect_guessing_game() -> None :
     """ Common/Main function for this Game. """
@@ -67,6 +89,15 @@ def perfect_guessing_game() -> None :
             message = f"\tSo sad\t:(\n\tComputer number: ****\n\t{inner_message} number please."
         print(f"{message:>20} ")
 
+
+
+
+
+
+
+
+
+
 def main() -> None :
     """ Main function """
     _match: int = 0
@@ -82,6 +113,11 @@ def main() -> None :
         if get_user_input("Do you want to play again?\nAnswer(y/n): ") in ['n','exit']:
             print("I hope you enjoy this game.\nThank you!")
             exit()
+
+
+
+
+
 
 
 
