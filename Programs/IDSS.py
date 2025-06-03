@@ -3,6 +3,11 @@ import numpy as np
 import pandas as pd
 import sys
 
+
+
+
+
+
 __doc__ = '''IDSS [1.0.8] Info Data Storing Software'''
 exit_text = "Enter 'exit' for exiting"
 initial_text = '''
@@ -14,12 +19,27 @@ Select option as your need:
 '''
 
 
+
+
+
+
+
+
+
 def line(n=42):
     print('-'*n)
 
 
+
+
+
 class Main:
+    """ main class """
+
+    
     def __init__(self):
+        """ constructor """
+        
         self.database = np.array([
             ['archit', '2023', 'archit is pursue BCA'],
             ['vansh', 'asdf', 'vansh is a boy']
@@ -35,6 +55,10 @@ class Main:
             elif op == 2: self.signup_fx()
             elif op == 3: print(self.datadf)
             else: sys.exit()
+
+
+
+    
     
     def loop_inputs(self):
         __doc__ = '''
@@ -53,6 +77,13 @@ class Main:
                 break
             else:
                 print(f"\n'{uinput}' Invalid(1-4)")
+
+
+
+
+
+
+    
     
     def signup_fx(self):
         # 1. input name and pass
@@ -81,7 +112,12 @@ class Main:
             if permission in ['n','no','not','never','nahi','na']:
                 break
                 
-        
+
+
+
+
+
+    
  
     def login_fx(self):
         print(exit_text)
@@ -123,7 +159,11 @@ class Main:
                 else:
                     break
 
-            
+
+
+
+
+
     
     
 # calling main function
