@@ -30,7 +30,7 @@ class YouTubeDex:
         # creating an object of BeautifulSoup
         soup = BeautifulSoup(response.text, 'html.parser')
         # fetching json content
-        json_str = soup.find_all('script')[24].text.split(" = ")[1].replace(';','')
+        json_str = soup.find_all('script')[24].text.split(" = ")[1].replace(';','') # this statement may be generate any error in future
         
         if save:
             # saving json content
