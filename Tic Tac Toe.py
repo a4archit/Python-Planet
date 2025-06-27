@@ -8,7 +8,7 @@ class TicTacToe:
     def __init__(self, mode: str):
         player2 = 'comp' if mode == 'comp' else 'user'
         self.matrix = np.full((3,3), None)
-        self.player1_chance = 0
+        self.player1_chance = 0  
         self.player2_chance = 0
         self.total_chances = self.player1_chance + self.player2_chance
         
