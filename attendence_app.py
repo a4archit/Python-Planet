@@ -157,6 +157,9 @@ class AttendenceApp:
       
 
 
+
+
+# main execution
 if __name__ == "__main__":
    AttendenceApp()
    
