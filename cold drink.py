@@ -1,7 +1,7 @@
 # I was code this program in my starting python learning phase.
 
 
-
+# dependencies
 import time
 import random
 
