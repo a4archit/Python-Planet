@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Periodic Table</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" >
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Permanent+Marker&family=Righteous&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+			background-color:#fff3d8;
+			min-height:100vh;
+		}
+		html{
+			font-size:1em;
+			font-size:10px;
+			font-size:62.5%;
+		}
+		h1 {
+			font-size:2.9em;
+			font-family:cursive;
+			background-color:;
+			text-shadow: #173459 0 0 1px;
+			font-style: normal;
+			height:.3em;
+			margin-left:.5em;
+			margin-top:.2em;
+			float:left;
+			width:50%;
+			font-family: ;
+		}
+		#logo {
+			font-size:4em;
+			float:right ;
+			height:1em;
+			background-color:white;
+			text-shadow: #173459 0 0 4px;
+			margin-right:.5em;
+			padding:.2em;
+			margin-top:1em;
+			color:#fff3d8;
+			border-radius:100px;
+			box-shadow: #173459 0 0 1px;
+			
+		}
+		#subtitle  {
+			font-size:1.4em;
+			font-family: 'Fredoka One';
+			margin-left:1em;
+			background-color:;
+			width:35%;
+		}
+		#demo, #paraTitle, #demo2, #demo3 {
+			font-size:2em;
+			background-color:;
+			text-align:left;
+			font-family: 'Fauna One', serif;
+			margin-left: 1em;
+			padding:0;
+		} 
+		#demo3 {
+			padding:2em;
+			float:left;
+			width: 10em;
+			background-color:#ffedc3;
+			border-radius: .5em;
+			box-shadow: gray 2px 2px 5px 3px;
+		}
+		
+		select {
+			border:ridge;
+			margin-left:1.2em;
+			padding:1em;
+			margin-top:1em;
+			background-color:#ffedc3;
+			font-family:fantasy;
+			width:14em;
+			border-radius:.3em;
+			font-family: 'Fauna One', serif;
+			box-shadow: #173459 1px 1px .1px .1px;
+		}
+		button {
+			border:ridge;
+			border-radius:.3em;
+			padding:1em;
+			width:7em;
+			font-family: 'Fredoka One', cursive;
+			color: #5f5f5f;
+			box-shadow: #173459 2px 2px .1px .1px ;
+			
+		}
+		#clearScreen{
+			width:14.1em;
+			margin-left:.8em;
+			margin-top:1em;
+			font-size:2em;
+			padding:.5em;
+			margin-bottom:1em;
+			box-shadow:#173459 2px 2px 1px;
+			
+		}
+		#banner{
+			background-color:#ffeec7;
+			height:6em;
+			border-bottom: 1px solid lightgray;
+		}
+		#btnslist {
+			float:left;
+			margin-right:5em;
+		}
+		#table1, #tr1, #th1, #th11, #th111, #table2, #tr2, #th2, #th22, #th222, #th2222{
+			border-style:solid;
+			border-width:.07em;
+			font-family: 'Fauna One', serif;
+			padding:.3em;
+			font-size:.84em;
+			border-radius:4px;
+			background-color:#ffeec7;
+			border-color: gray;			
+		}
+		
+		#tr1, #th1, #th11, #th111, #tr2, #th2, #th22, #th222, #th2222{
+			background-color:#fff3d8;
+		}
+		
+		#table1, #table2 {
+			padding:0px;
+			text-align:center;
+			float:right;
+			border-color:gray;
+		}
+		#table1 {
+			width:55%;
+			margin-right:5em;
+		}
+		#table2 {
+			width:55%;
+			margin-left:1em;
+			float:right;
+			margin-right:3em;
+		}
+		#th222, #th111{
+			color:blue;
+			border-color: gray;
+		}
+		#th2222{
+			color:red;
+			border-color:gray;
+		}
+		#name {
+			font-size:1.5em;
+			text-align:center;
+			font-family: serif;
+			background-color:gray;
+			color:white;
+			padding:.5em;
+		}
+		#email {
+			text-decoration:link;
+			font-family: Arial, sans-serif, ;
+			color:skyblue;
+			
+		}
+		#note {
+			font-size:1.3em;
+			margin-left:.5em;
+			text-align: center;
+		}
+		a {
+			text-decoration: none;
+			color: green;
+		}
+		
+		
+	</style>
+</head>
+
+<!-- I SPEND approx. 35 HRS FOR THIS PROJECT
+-->
+
+
+<body>
+<div id="contents">
+<div id="banner">
+	<p id="logo">A</p>
+	<h1>Periodic Data</h1>
+	<br>
+	<p id="subtitle">for your study</p>
+</div>
+		<p id="name">-by <a href="mailto:archittyagi599@gmail.com" id="email" target="_blank">Archit Tyagi</a></p>
+
+		<p id="note">
+		<b>NOTE:</b> This program is valid for first 30 elements.
+		</p>
+<div id="bsp_div">		
+	<br>
+	<br>
+	<br>
+	<span id="btnslist">
+	<select id="elementList" >
+		<option value="Hydrogen" >1. Hydrogen(H)</option>
+		<option value="Helium" >2. Helium(He)</option>
+		<option value="Lithium" >3. Lithium(Li)</option>
+		<option value="Beryllium" >4. Beryllium(Be)</option>
+		<option value="Boron" >5. Boron(B)</option>
+		<option value="Carbon" >6. Carbon(C)</option>
+		<option value="Nitrogen" >7. Nitrogen(N)</option>
+		<option value="Oxygen" >8. Oxygen(O)</option>
+		<option value="Fluorine" >9. Fluorine(F)</option>
+		<option value="Neon" >10. Neon(Ne)</option>
+		<option value="Sodium" >11. Sodium(Na)</option>
+		<option value="Magnesium" >12. Magnesium(Mg)</option>
+		<option value="Aluminium" >13. Aluminium(Al)</option>
+		<option value="Silicon" >14. Silicon(Si)</option>
+		<option value="Phosphorus" >15. Phosphorus(P)</option>
+		<option value="Sulfur" >16. Sulfur(S)</option>
+		<option value="Chlorine" >17. Chlorine(Cl)</option>
+		<option value="Argon" >18. Argon(Ar)</option>
+		<option value="Potassium" >19. Potassium(K)</option>
+		<option value="Calcium" >20. Calcium(Ca)</option>
+		<option value="Scandium" >21. Scandium(Sc)</option>
+		<option value="Titanium" >22. Titanium(Ti)</option>
+		<option value="Vanadium" >23. Vanadium(V)</option>
+		<option value="Chromium" >24. Chromium(Cr)</option>
+		<option value="Manganese" >25. Manganese(Mn)</option>
+		<option value="Iron" >26. Iron(Fe)</option>
+		<option value="Cobalt" >27. Cobalt(Co)</option>
+		<option value="Nickel" >28. Nickel(Ni)</option>
+		<option value="Copper" >29. Copper(Cu)</option>
+		<option value="Zinc" >30. Zinc(Zn)</option>
+	</select>
+	<button onclick="element_details()" value="SEEDETAILS" >See&nbsp;Details</button>
+	
+	<br>
+	<select id="elementList2" >
+		<option value="NO">comparing with...</option>
+		<option value="Hydrogen" >1. Hydrogen(H)</option>
+		<option value="Helium" >2. Helium(He)</option>
+		<option value="Lithium" >3. Lithium(Li)</option>
+		<option value="Beryllium" >4. Beryllium(Be)</option>
+		<option value="Boron" >5. Boron(B)</option>
+		<option value="Carbon" >6. Carbon(C)</option>
+		<option value="Nitrogen" >7. Nitrogen(N)</option>
+		<option value="Oxygen" >8. Oxygen(O)</option>
+		<option value="Fluorine" >9. Fluorine(F)</option>
+		<option value="Neon" >10. Neon(Ne)</option>
+		<option value="Sodium" >11. Sodium(Na)</option>
+		<option value="Magnesium" >12. Magnesium(Mg)</option>
+		<option value="Aluminium" >13. Aluminium(Al)</option>
+		<option value="Silicon" >14. Silicon(Si)</option>
+		<option value="Phosphorus" >15. Phosphorus(P)</option>
+		<option value="Sulfur" >16. Sulfur(S)</option>
+		<option value="Chlorine" >17. Chlorine(Cl)</option>
+		<option value="Argon" >18. Argon(Ar)</option>
+		<option value="Potassium" >19. Potassium(K)</option>
+		<option value="Calcium" >20. Calcium(Ca)</option>
+		<option value="Scandium" >21. Scandium(Sc)</option>
+		<option value="Titanium" >22. Titanium(Ti)</option>
+		<option value="Vanadium" >23. Vanadium(V)</option>
+		<option value="Chromium" >24. Chromium(Cr)</option>
+		<option value="Manganese" >25. Manganese(Mn)</option>
+		<option value="Iron" >26. Iron(Fe)</option>
+		<option value="Cobalt" >27. Cobalt(Co)</option>
+		<option value="Nickel" >28. Nickel(Ni)</option>
+		<option value="Copper" >29. Copper(Cu)</option>
+		<option value="Zinc" >30. Zinc(Zn)</option>
+<!--		<option value="Gallium" >31. Gallium(Ga)</option>
+		<option value="Germanium" >32. Germanium(Ge)</option>
+		<option value="Arsenic" >33. Arsenic(As)</option>
+		<option value="Selenium" >34. Selenium(Se)</option>
+		<option value="Bromine" >35. Bromine(Br)</option>
+		<option value="Krypton" >36. Krypton(Kr)</option>
+		<option value="Rubidium" >37. Rubidium(Rb)</option>
+		<option value="Strontium" >38. Strontium(Sr)</option>
+		<option value="Yttrium" >39. Yttrium(Y)</option>
+		<option value="Zirconium" >40. Zirconium(Zr)</option>
+		<option value="Niobium" >41. Niobium(Nb)</option>
+		<option value="Molybdenum" >42. Molybdenum(Mo)</option>
+		<option value="Technetium" >43. Technetium(Tc)</option>
+		<option value="Ruthenium" >44. Ruthenium(Ru)</option>
+		<option value="Rhodium" >45. Rhodium(Rh)</option>
+		<option value="Palladium" >46. Palladium(Pd)</option>
+		<option value="Silver" >47. Silver(Ag)</option>
+		<option value="Cadmium" >48. Cadmium(Cd)</option>
+		<option value="Indium" >49. Indium(In)</option>
+		<option value="Tin" >50. Tin(Sn)</option>
+		<option value="Antimony" >51. Antimony(Sb)</option>
+		<option value="Tellurium" >52. Tellurium(Te)</option>
+		<option value="Iodine" >53. Iodine(I)</option>
+		<option value="Xenon" >54. Xenon(Xe)</option>
+		<option value="Caesium" >55. Caesium(Cs)</option>
+		<option value="Barium" >56. Barium(Ba)</option>
+		<option value="Lanthanum" >57. Lanthanum(La)</option>
+		<option value="Cerium" >58. Cerium(Ce)</option>
+		<option value="Praseodymium" >59. Praseodymium(Pr)</option>
+		<option value="Neodymium" >60. Neodymium(Nd)</option>
+		<option value="Promethium" >61. Promethium(Pm)</option>
+		<option value="Samarium" >62. Samarium(Sm)</option>
+		<option value="Europium" >63. Europium(Eu)</option>
+		<option value="Gadolinium" >64. Gadolinium(Gd)</option>
+		<option value="Terbium" >65. Terbium(Tb)</option>
+		<option value="Dysprosium" >66. Dysprosium(Dy)</option>
+		<option value="Holmium" >67. Holmium(Ho)</option>
+		<option value="Erbium" >68. Erbium(Er)</option>
+		<option value="Thulium" >69. Thulium(Tm)</option>
+		<option value="Ytterbium" >70. Ytterbium(Yb)</option>
+		<option value="Lutetium" >71. Lutetium(Lu)</option>
+		<option value="Hafnium" >72. Hafnium(Hf)</option>
+		<option value="Tantalum" >73. Tantalum(Ta)</option>
+		<option value="Tungsten" >74. Tungsten(W)</option>
+		<option value="Rhenium" >75. Rhenium(Re)</option>
+		<option value="Osmium" >76. Osmium(Os)</option>
+		<option value="Iridium" >77. Iridium(Ir)</option>
+		<option value="Platinum" >78. Platinum(Pt)</option>
+		<option value="Gold" >79. Gold(Au)</option>
+		<option value="Mercury" >80. Mercury(Hg)</option>
+		<option value="Thallium" >81. Thallium(Tl)</option>
+		<option value="Lead" >82. Lead(Pb)</option>
+		<option value="Bismuth" >83. Bismuth(Bi)</option>
+		<option value="Polonium" >84. Polonium(Po)</option>
+		<option value="Astatine" >85. Astatine(At)</option>
+		<option value="Radon" >86. Radon(Rn)</option>
+		<option value="Francium" >87. Francium(Fr)</option>
+		<option value="Radium" >88. Radium(Ra)</option>
+		<option value="Actinium" >89. Actinium(Ac)</option>
+		<option value="Thorium" >90. Thorium(Th)</option>
+		<option value="Protactinium" >91. Protactinium(Pa)</option>
+		<option value="Uranium" >92. Uranium(U)</option>
+		<option value="Neptunium" >93. Neptunium(Np)</option>
+		<option value="Plutonium" >94. Plutonium(Pu)</option>
+		<option value="Americium" >95. Americium(Am)</option>
+		<option value="Curium" >96. Curium(Cm)</option>
+		<option value="Berkelium" >97. Berkelium(Bk)</option>
+		<option value="Californium" >98. Californium(Cf)</option>
+		<option value="Einstinium" >99. Einstinium(Es)</option>
+		<option value="Fermium" >100. Fermium(Fm)</option>
+		<option value="Mendelevium" >101. Mendelevium(Md)</option>
+		<option value="Nobelium" >102. Nobelium(No)</option>
+		<option value="Lawerencium" >103. Lawrencium(Li)</option>
+		<option value="Rutherfordium" >104. Rutherfordium(Rf)</option>
+		<option value="Dubnium" >105. Dubnium(Db)</option>
+		<option value="Seaborgium" >106. Seaborgium(Sg)</option>
+		<option value="Bhorium" >107. Bohrium(Bh)</option>
+		<option value="Hassium" >108. Hassium(Hs)</option>
+		<option value="Meitnerium" >109. Meitnerium(Mt)</option>
+		<option value="Darmsladtium" >110. Darmsladtium(Ds)</option>
+		<option value="Roentgenium" >111. Roentgenium(Rg)</option>
+		<option value="Copernicium" >112. Copernicium(Cn)</option>
+		<option value="Nihonium" >113. Nihonium(Nh)</option>
+		<option value="Flerovium" >114. Flerovium(Fl)</option>
+		<option value="Moscovium" >115. Moscovium(Mc)</option>
+		<option value="Livermorium" >116. Livermorium(Lv)</option>
+		<option value="Tennessine" >117. Tennessine(Ts)</option>
+		<option value="Oganesson" >118. Oganesson(Og)</option>
+-->	</select>
+	<button id="" onclick="compare_function()" value="COMPARE" >Compare</button>
+	<br>
+	
+	<select id="sort" >
+		<option value="Default" >Default</option>
+		<option value="AZ" >A - Z</option>
+		<option value="ZA" >Z - A</option>
+	</select>
+	<button onclick="final_sort_function()">Sort</button>
+	<br>
+		<select id="extraList">
+			<option value="ELEMENTINSEQUENCE">Elements in Sequence</option>
+			<option value="REACTIVITYSERIES">Reactivity Series</option>
+			<option value="NOBLEGASES">Noble Gases</option>
+		</select>
+		<button onclick="print_extra_list()">Show</button>
+	<br>
+	<button onclick="clear_the_screen()" id="clearScreen">Clear Screen</button>
+</span>
+</div>	
+</div>
+
+		<br>
+		<p id="demo2"></p>
+		<p id="demo" ><br>
+			Welcome in <u>Periodic Data</u> website. <br />On this platform you increase your chemistry learning level. With the help of this tool your queries will be decrease.
+			<br><br><b><i>Here you get such type of information about Elements:</b><br>1. Atomic Name, Number, Color & Radii<br>
+																		2. Element type, <br>
+																	3. Group & Period Number<br>
+																	4. Electronegativity, Block Name<br>
+													    			5. State and many more details<br></i>
+			<br>
+			<br>
+			<i><b>>>>>> Let's Start it!</b></i>
+		</p>
+	<br>
+	<p id="demo3">Extra Data goes here....<br /></p>
+	
+	<script type="text/javascript">
+		
+//--------------------------------EXTRA LISTS ANALYSING FUNCTION-----------------
+		 function extra_list_analising_function(extra_list_variable){
+		 	if(extra_list_variable == "ELEMENTINSEQUENCE"){
+		 		extra_list_value = ['<a href="https://en.m.wikipedia.org/wiki/Hydrogen"> Hydrogen</a>', 
+		 							'<a href="https://en.m.wikipedia.org/wiki/Helium"> Helium</a>', 
+		 							'<a href="https://en.m.wikipedia.org/wiki/Lithium"> Lithium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Beryllium"> Beryllium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Boron"> Boron</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Carbon"> Carbon</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Nitrogen"> Nitrogen</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Oxygen"> Oxygen</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Fluorine"> Flourine</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Neon"> Neon</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Sodium">Sodium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Magnesium">Magnesium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Aluminium">Aluminium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Silicon">Silicon</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Phosphorus">Phosphorus</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Sulphur">Sulphur</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Chlorine">Chlorine</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Argon">Argon</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Potassium">Potassium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Calcium">Calcium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Scandium">Scandium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Titanium">Titanium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Vanadium">Vanadium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Chromium">Chromium</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Manganese">Manganese</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Iron">Iron</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Cobalt">Cobalt</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Nickel">Nickel</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/Copper">Copper</a>',
+		 							'<a href="https://en.m.wikipedia.org/wiki/mZinc">Zinc</a>',];
+		 	}
+		 	else if(extra_list_variable == "REACTIVITYSERIES" ){
+		 		extra_list_value = ["Li - Lithium", "K - Potassium", "Ba - Barium", "Ca - Calcium", "Na - Sodium", 
+		 							"Mg - Magnesium", "Al - Aluminium", "Zn - Zinc", "Fe - Iron", "Ni - Nickel",
+		 							"Sn - Tin", "H<sub>2</sub> - Hydrogen", "Cu - Copper", "Ag - Gold"];
+		 	}
+		 	else if(extra_list_variable == "NOBLEGASES"){
+		 		extra_list_value = ["He - Helium", "Ne - Neon", "Ar - Argon", "Kr - Krypton", "Xe - Xenon", "Rn - Radon"];
+		 	}
+		 	else{
+		 		extra_list_value = ["x", "y", "z"];
+		 	}
+		 	
+		 	return extra_list_value;
+		 }		
+		
+		
+//--------------------------------------- PRINT EXTRA LISTS ---------------------------------------------------
+		function print_extra_list(){
+			var user_selecting_list = document.getElementById("extraList").value;
+			print_extra_list_value = extra_list_analising_function(user_selecting_list);
+			var str3="";
+			for(i = 0; i < print_extra_list_value.length; i++){
+				str3 += (i+1) + ".    " + print_extra_list_value[i] + "<br>";
+			}
+			document.getElementById("demo3").innerHTML = str3;
+		}		
+		
+		
+		
+		var name_list_for_return_array = ["Name: ",	"Symbol: ", "Atomic Number: ", "Mass: ", "Charge: ","Valence electrons: ", "No. of electrons: ", 
+			"No. of protons: ",	"Colour: ",	"Block: ", "Group Number: ", "Period Number: ",	"No. of shells/orbits: ", "Shells/orbit distribution: ", 
+			"Electron distributive order in shells: ", "Electron distribution in shells: ", "State: ", "Density: ",	"Melting Point: ",	"Boiling Point: ",			
+			"Element Type: ", "Atomic Radii: ", "Electronic Configuration: ", "Electronegativity: ", "No. of Neutrons: "] ;
+		
+		
+//--------------------------------COMPARE FUNCTION-----------------------------
+		function compare_function(){	
+			clear_screen();
+			var compare_sort_method_input = document.getElementById("sort").value;
+			sort_analising_function2_permission(compare_sort_method_input);
+		}
+						
+		
+//------------------------SORT ANALISING AND PRINTING FUNCTION FOR COMPARISION FUNCTION __PERMISSION__--------------
+		function sort_analising_function2_permission(permit){
+			var list2_value = document.getElementById("elementList2").value;
+			if(list2_value == "NO"){
+				clear_screen();
+				document.getElementById("demo").innerHTML = "Please Choose an element <b>First</b> for comparision.";
+			}else{
+				clear_screen();
+				var sort_value = document.getElementById("sort").value;
+				sort_analising_function2(sort_value);
+			}
+		}
+		
+		
+		
+// -----------------------SORT ANALISING AND PRINTING FUNCTION FOR COMPARE BUTTON---------------------
+					function sort_analising_function2(sort_method2){
+						clear_screen();
+					
+						var user_selecting_element2 = document.getElementById("elementList2").value;
+						var user_selecting_element1 = document.getElementById("elementList").value;
+						var table_data2 = element_details_analising_function(user_selecting_element2);
+						var table_data1 = element_details_analising_function(user_selecting_element1);
+						if(sort_method2 == "AZ"){
+							name_list_for_return_array = ["Atomic Number", "Atomic Radii", "Block", "Boiling Point", "Charge","Colour", "Density", "Electron Distribution in shell",// 8
+								"Electron distributive order in shell", "Electronic Configuration", "Element Name", "Element Type", "Group No.", "Mass", "Melting Point", "No. of Electrone", // 8
+								"No. of Neutron", "No. of Proton","No. of shell/orbit", "Period no. ", "Shell/orbit distribution","State", "Symbol", "Valence Electrone"]; // 8
+							table_data_for_print2 = [table_data2[2], table_data2[21], table_data2[9], table_data2[19], table_data2[4], table_data2[8], table_data2[17], table_data2[14], 
+								table_data2[15], table_data2[22], table_data2[0], table_data2[20], table_data2[10], table_data2[3], table_data2[18], table_data2[2], 
+								table_data2[23], table_data2[2], table_data2[12], table_data2[11], table_data2[13], table_data2[16], table_data2[1], table_data2[5]   ];
+							table_data_for_print1 = [table_data1[2], table_data1[21], table_data1[9], table_data1[19], table_data1[4], table_data1[8], table_data1[17], table_data1[14], 
+								table_data1[15], table_data1[22], table_data1[0], table_data1[20], table_data1[10], table_data1[3], table_data1[18], table_data1[2], 
+								table_data1[23], table_data1[2], table_data1[12], table_data1[11], table_data1[13], table_data1[16], table_data1[1], table_data1[5]   ];
+						}
+						else if(sort_method2 == "ZA"){
+							name_list_for_return_array = ["Valence Electrone", "Symbol", "State", "Shell/orbit distribution", "Period no. ","No. of shell/orbit","No. of Proton","No. of Neutron",
+								"No. of Electrone", "Melting Point", "Mass", "Group No. ", "Element Type:", "Element Name", "Electronic Configuration", "Electron distributive order in shell",
+								"Electron Distribution in shell","Density","Colour","Charge", "Boiling Point", "Block", "Atomic Radii", "Atomic Number"];
+							table_data_for_print2 = [table_data2[5], table_data2[1], table_data2[16], table_data2[13], table_data2[11], table_data2[12], table_data2[2], table_data2[23], 
+								table_data2[2], table_data2[18], table_data2[3], table_data2[10], table_data2[20], table_data2[0], table_data2[22], table_data2[15], 
+								table_data2[14], table_data2[17], table_data2[8], table_data2[4], table_data2[19], table_data2[9], table_data2[21], table_data2[2]   ];
+							table_data_for_print1 = [table_data1[5], table_data1[1], table_data1[16], table_data1[13], table_data1[11], table_data1[12], table_data1[2], table_data1[23], 
+								table_data1[2], table_data1[18], table_data1[3], table_data1[10], table_data1[20], table_data1[0], table_data1[22], table_data1[2], 
+								table_data1[14], table_data1[17], table_data1[8], table_data1[4], table_data1[19], table_data1[9], table_data1[21], table_data1[5]   ];
+							
+						}
+						else{
+							name_list_for_return_array = ["Name: ",	"Symbol: ", "Atomic Number: ", "Mass: ", "Charge: ","Valence electrons: ", "No. of electrons: ", 
+								"No. of protons: ",	"Colour: ",	"Block: ", "Group Number: ", "Period Number: ",	"No. of shells/orbits: ", "Shells/orbit distribution: ", 
+								"Electron distributive order in shells: ", "Electron distribution in shells: ", "State: ", "Density: ",	"Melting Point: ",	"Boiling Point: ",			
+								"Element Type: ", "Atomic Radii: ", "Electronic Configuration: ", "Electronegativity: ", "No. of Neutrons: "] ;
+							table_data_for_print2 = table_data2;
+							table_data_for_print1 = table_data1;
+						}
+					data_to_table2(name_list_for_return_array, table_data_for_print1,  table_data_for_print2,  "demo");
+					
+					}
+					
+		
+		
+// -----------------Printing compare function (2 rows)----------------
+		function data_to_table2(data_names2, data_values1, data_values2,  _id_2){
+		var rr2, cc2, str2="";
+		str2 += "<table id='table2'>";	
+		
+		for (rr2 = 0; rr2 <= data_names2.length-1; rr2++) {
+			str2 += "<tr id='tr2'>";
+			for(cc2=1; cc2 <=1; cc2++){
+				str2 += "<th id='th2'> " + (rr2+1) + "</th>";
+				str2 += "<th id='th22'> " + data_names2[rr2] + " </th>";
+				str2 += "<th id='th222'> " + data_values1[rr2] + " </th>";
+				str2 += "<th id='th2222'> " + data_values2[rr2] + "</th>";
+			}			
+			str2 += "</tr>";
+		}
+		str2 += "</table>";
+		document.getElementById(_id_2).innerHTML = str2;
+		}
+		
+		
+		
+		
+// ---------------Element details function ----------------
+			function element_details(){
+				clear_screen();
+
+				var sort_method_input = document.getElementById("sort").value;
+				
+				sort_analising_function(sort_method_input);
+			}
+			
+			var name_list_for_return_array;
+			
+			
+			
+// --------------- Sort analising Function for Element Details -----------
+			function sort_analising_function(sort_method){
+				clear_screen();				
+				var user_selecting_element = document.getElementById("elementList").value;
+				var table_data = element_details_analising_function(user_selecting_element);
+				if(sort_method == "AZ"){
+					name_list_for_return_array = ["Atomic Number", "Atomic Radii", "Block", "Boiling Point", "Charge","Colour", "Density", "Electron Distribution in shell",// 8
+						"Electron distributive order in shell", "Electronic Configuration", "Element Name", "Element Type", "Group No.", "Mass", "Melting Point", "No. of Electrone", // 8
+						"No. of Neutron", "No. of Proton","No. of shell/orbit", "Period no. ", "Shell/orbit distribution","State", "Symbol", "Valence Electrone"]; // 8
+					table_data_for_print = [table_data[2], table_data[21], table_data[9], table_data[19], table_data[4], table_data[8], table_data[17], table_data[14], 
+						table_data[15], table_data[22], table_data[0], table_data[20], table_data[10], table_data[3], table_data[18], table_data[2], 
+						table_data[23], table_data[2], table_data[12], table_data[11], table_data[13], table_data[16], table_data[1], table_data[5]   ];
+				}
+				else if(sort_method == "ZA"){
+						// name_list_for_return_array arrange to be in Z to A
+					name_list_for_return_array = ["Valence Electrone", "Symbol", "State", "Shell/orbit distribution", "Period no. ","No. of shell/orbit","No. of Proton","No. of Neutron",
+						"No. of Electrone", "Melting Point", "Mass", "Group No. ", "Element Type:", "Element Name", "Electronic Configuration", "Electron distributive order in shell",
+						"Electron Distribution in shell","Density","Colour","Charge", "Boiling Point", "Block", "Atomic Radii", "Atomic Number"];
+					table_data_for_print = [table_data[5], table_data[1], table_data[16], table_data[13], table_data[11], table_data[12], table_data[2], table_data[23], 
+						table_data[2], table_data[18], table_data[3], table_data[10], table_data[20], table_data[0], table_data[22], table_data[15], 
+						table_data[14], table_data[17], table_data[8], table_data[4], table_data[19], table_data[9], table_data[21], table_data[2]   ];
+					
+				}
+				else{
+					 name_list_for_return_array = ["Name: ",	"Symbol: ", "Atomic Number: ", "Mass: ", "Charge: ","Valence electrons: ", "No. of electrons: ", 
+						"No. of protons: ",	"Colour: ",	"Block: ", "Group Number: ", "Period Number: ",	"No. of shells/orbits: ", "Shells/orbit distribution: ", 
+						"Electron distributive order in shells: ", "Electron distribution in shells: ", "State: ", "Density: ",	"Melting Point: ",	"Boiling Point: ",			
+						"Element Type: ", "Atomic Radii: ", "Electronic Configuration: ", "Electronegativity: ", "No. of Neutrons: "] ;
+					table_data_for_print = table_data;
+				}
+				data_to_table(name_list_for_return_array, table_data_for_print, "demo");
+				
+			}
+//_________________________________________________________________________________________________________________________________________			
+			
+			
+			
+			
+			
+// ----------- FINAL SORT FUNCTION ------------
+		function final_sort_function(){
+			var list2_value = document.getElementById("elementList2").value;
+			if(list2_value == "NO"){
+				clear_screen();
+				document.getElementById("demo2").innerHTML = 
+					"Please Choose an element <b>First</b> for comparision.";
+				element_details();
+			}else{
+				clear_screen();
+				document.getElementById("demo2").innerHTML = "";
+				var sort_value = document.getElementById("sort").value;
+				sort_analising_function2(sort_value);
+			}
+		}
+//_______________________________________________________________________		
+		
+		
+		
+/*---------------------------THIS FUNCTION PRINT THE DATA ARRAYS IN SEQUENCE--------------------	
+		this function take three variables 
+		 first varible ---> for Data Names ie SYMBOL, NAME, COLOUR etc
+		 second variable ---> for Data Value ie He, HELIUM, COLOURLESS etc
+		 third varible ---> passing the paragraph id
+*/		
+		function data_to_table(data_names, data_values, _id_){
+		var rr, cc, str="";
+		str += "<table id='table1'>";	
+		
+		for (rr = 0; rr <= data_names.length-1; rr++) {
+			str += "<tr id='tr1'>";
+			for(cc=1; cc <=1; cc++){
+				str += "<th id='th1'> " + (rr+1) + "</th>";
+				str += "<th id='th11'> " + data_names[rr] + " </th>";
+				str += "<th id='th111'> " + data_values[rr] + " </th>";
+			}			
+			str += "</tr>";
+		}
+		str += "</table>";
+		document.getElementById(_id_).innerHTML = str
+		}
+//________________________________________________________________________		
+		
+		
+//----------------------function for clear the SCREEN ------------------
+		function clear_the_screen(){
+			document.getElementById("demo").innerHTML = "";		
+			document.getElementById("demo3").innerHTML = "";
+		}
+		function clear_screen(){
+			document.getElementById("demo").innerHTML = "";			
+		//	document.getElementById("demo3").innerHTML = "";
+		}
+
+//_________________________________________________________________		
+		
+		
+//------------------------function for displaying details---------------
+		function element_details_analising_function(x) {
+		
+			var atomic_name, 
+				atomic_number, // use atomic no. as no. of electron and proton
+				symbol,
+				density,
+				state = "Solid",
+				solid_state,
+				mass,
+				charge,
+				shell_type,
+				shell_cofiguration,
+				shell_electron_distribution, // 2 8 18 32 32 18 8
+				atomic_radii,
+				atomic_color = "Silver",
+				electron_distribution,
+				no_of_neutrons,
+				electronic_configuration,
+				group_no,
+				period_no,
+				valence_electrons,
+				element_type,
+				metal_type,
+				nonmetal_type,
+				boiling_point,
+				electronegativity,
+				block_type,
+				melting_point;
+			
+			atomic_name = x.toUpperCase();
+			
+			
+			if( atomic_name == "HYDROGEN" ){
+				atomic_number = 1;
+				symbol = "H";
+				density = 0.09;
+				state = "Gas";
+				mass = 1.008;
+				charge = "+1";
+				shell_type = 1;
+				atomic_radii = 25;
+				atomic_color = "Colourless";
+				no_of_neutrons = 0;
+				electronic_configuration = "1s<sup>1</sup>";
+				group_no = 1;
+				period_no = 1;
+				valence_electrons = 1;
+				element_type = "Non metal";
+				boiling_point = "-253";
+				melting_point = "-259";
+				block_type = "s";
+				electron_distribution = "1";
+				shell_electron_distribution = "2";
+			}
+			else if( atomic_name == "HELIUM"){
+				atomic_number = 2;
+				symbol = "He";
+				density = 0.18;
+				state = "Gas";
+				mass = 4.003;
+				charge = 0;
+				shell_type = 1;
+				shell_electron_distribution = 2;
+				atomic_radii = 31;
+				atomic_color = "Colourless";
+				electron_distribution = "2";
+				no_of_neutrons = 2;
+				electronic_configuration = "1s<sup>2</sup>"
+				group_no = 18;
+				period_no = 1;
+				valence_electrons = 0;
+				element_type = "Non-metal";
+				boiling_point = "-269";
+				electronegativity = "No-Data"
+				block_type = "p";
+				melting_point = "-272";
+			}
+			else if( atomic_name == "LITHIUM"){
+				atomic_number = 3;
+				symbol = "Li";
+				density = 0.53;
+				state = "Solid";
+				mass = 6.941;
+				charge = "+1"
+				shell_type = 2;
+				atomic_radii = 145;
+				electron_distribution = "2-1";
+				no_of_neutrons = 4;
+				electronic_configuration = "[He]2s<sup>1</sup>";
+				group_no = 1;
+				period_no = 2;
+				valence_electrons = 1;
+				element_type = "Metal (Alkali)";
+				boiling_point = "1347";
+				electronegativity = "0.98";
+				block_type = "s-block";
+				melting_point = "180";
+			}
+			else if( atomic_name == "BERYLLIUM"){
+				atomic_number = 4;
+				symbol = "Be";
+				density = 1.85;
+				state = "Solid";
+				mass = 9.0122;
+				charge = "+2"
+				shell_type = 2;
+				atomic_radii = 1.57;
+				atomic_color = "Slate Gray";		
+				electron_distribution = "2-2";
+				no_of_neutrons = 5;
+				electronic_configuration = "[He]2s<sup>2</sup>";
+				group_no = 2;
+				period_no = 2;
+				valence_electrons = 2;
+				element_type = "Metal (Alkaline)";
+				boiling_point = "2970";
+				electronegativity = "1.57";
+				block_type = "s-block";
+				melting_point = "1278";
+			}
+			else if( atomic_name == "BORON"){
+				atomic_number = 5;
+				symbol = "B";
+				density = 2.34;
+				state = "Solid";
+				mass = 10.81;
+				charge = "+3"
+				shell_type = 2;
+				atomic_radii = 85;
+				atomic_color = "Black";		
+				electron_distribution = "2-3";
+				no_of_neutrons = 6;
+				electronic_configuration = "[He]2s<sup>2</sup>2p<sup>1</sup>";
+				group_no = 13;
+				period_no = 2;
+				valence_electrons = 3;
+				element_type = "Metalloid";
+				boiling_point = "2550";
+				electronegativity = "2.04";
+				block_type = "p-block";
+				melting_point = "2300";
+			}
+			else if( atomic_name == "CARBON"){
+				atomic_number = 6;
+				symbol = "C";
+				density = 2.26;
+				state = "Solid";
+				mass = 12.011;
+				charge = "+4, +3, +2, +1, -4, -3, -2, -1"
+				shell_type = 2;
+				atomic_radii = 70;
+				atomic_color = "Black";		
+				electron_distribution = "2-4";
+				no_of_neutrons = 6;
+				electronic_configuration = "[He]2s<sup>2</sup>2p<sup>2</sup>";
+				group_no = 14;
+				period_no = 2;
+				valence_electrons = 4;
+				element_type = "Nonmetal";
+				boiling_point = "4827";
+				electronegativity = "2.55";
+				block_type = "p-block";
+				melting_point = "3500";
+			}
+			else if( atomic_name == "NITROGEN"){
+				atomic_number = 7;
+				symbol = "N";
+				density = 1.25;
+				state = "Gas";
+				mass = 14.007;
+				charge = "+5, +3, -3";
+				shell_type = 2;
+				atomic_radii = 65;
+				atomic_color = "Colourless";		
+				electron_distribution = "2-5";
+				no_of_neutrons = 7;
+				electronic_configuration = "[He]2s<sup>2</sup>2p<sup>3</sup>";
+				group_no = 15;
+				period_no = 2;
+				valence_electrons = 5;
+				element_type = "Nonmetal";
+				boiling_point = "-196";
+				electronegativity = "3.04";
+				block_type = "p-block";
+				melting_point = "-210";
+			}
+			else if( atomic_name == "OXYGEN"){
+				atomic_number = 8;
+				symbol = "O";
+				density = 1.43;
+				state = "Gas";
+				mass = 15.999;
+				charge = "-2";
+				shell_type = 2;
+				atomic_radii = 60;
+				atomic_color = "Colourless";		
+				electron_distribution = "2-6";
+				no_of_neutrons = 8;
+				electronic_configuration = "[He]2s<sup>2</sup>2p<sup>4</sup>";
+				group_no = 16;
+				period_no = 2;
+				valence_electrons = 6;
+				element_type = "Nonmetal";
+				boiling_point = "-183";
+				electronegativity = "3.44";
+				block_type = "p-block";
+				melting_point = "-218";
+			}
+			else if( atomic_name == "FLUORINE"){
+				atomic_number = 9;
+				symbol = "F";
+				density = 1.7;
+				state = "Gas";
+				mass = 18.998;
+				charge = "-1";
+				shell_type = 2;
+				atomic_radii = 50;
+				atomic_color = "Colourless";		
+				electron_distribution = "2-7";
+				no_of_neutrons = 10;
+				electronic_configuration = "[He]2s<sup>2</sup>2p<sup>5</sup>";
+				group_no = 17;
+				period_no = 2;
+				valence_electrons = 7;
+				element_type = "Nonmetal";
+				boiling_point = "-188";
+				electronegativity = "3.98";
+				block_type = "p-block";
+				melting_point = "-220";
+			}
+			else if( atomic_name == "NEON"){
+				atomic_number = 10;
+				symbol = "Ne";
+				density = 0.9;
+				state = "Gas";
+				mass = 20.18;
+				charge = "0";
+				shell_type = 2;
+				atomic_radii = 38;
+				atomic_color = "Colourless";		
+				electron_distribution = "2-8";
+				no_of_neutrons = 10;
+				electronic_configuration = "[He]2s<sup>2</sup>2p<sup>6</sup>";
+				group_no = 18;
+				period_no = 2;
+				valence_electrons = 8;
+				element_type = "Nonmetal (Nobel Gas)";
+				boiling_point = "-246";
+				electronegativity = "no data";
+				block_type = "p-block";
+				melting_point = "-249";
+			}
+			else if( atomic_name == "SODIUM"){
+				atomic_number = 11;
+				symbol = "Na";
+				density = 0.97;
+				state = "Solid";
+				mass = 22.990;
+				charge = "+1";
+				shell_type = 3;
+				atomic_radii = 180;
+				atomic_color = "Silver";		
+				electron_distribution = "2-8-1";
+				no_of_neutrons = 12;
+				electronic_configuration = "[Ne]3s<sup>1</sup>";
+				group_no = 1;
+				period_no = 3;
+				valence_electrons = 1;
+				element_type = "Metal (Alkali)";
+				boiling_point = "883";
+				electronegativity = "0.93";
+				block_type = "s-block";
+				melting_point = "98";
+			}
+			else if( atomic_name == "MAGNESIUM"){
+				atomic_number = 12;
+				symbol = "Mg";
+				density = 1.74;
+				state = "Solid";
+				mass = 24.305;
+				charge = "+2";
+				shell_type = 3;
+				atomic_radii = 150;
+				atomic_color = "Silver";		
+				electron_distribution = "2-8-2";
+				no_of_neutrons = 12;
+				electronic_configuration = "[Ne]3s<sup>2</sup>";
+				group_no = 2;
+				period_no = 3;
+				valence_electrons = 2;
+				element_type = "Metal (Alkaline)";
+				boiling_point = "1090";
+				electronegativity = "1.31";
+				block_type = "s-block";
+				melting_point = "639";
+			}
+			else if( atomic_name == "ALUMINIUM"){
+				atomic_number = 13;
+				symbol = "Al";
+				density = 2.7;
+				state = "Solid";
+				mass = 26.982;
+				charge = "+3";
+				shell_type = 3;
+				atomic_radii = 125;
+				atomic_color = "Silver";		
+				electron_distribution = "2-8-3";
+				no_of_neutrons = 14;
+				electronic_configuration = "[Ne]3s<sup>2</sup>3p<sup>1</sup>";
+				group_no = 13;
+				period_no = 3;
+				valence_electrons = 3;
+				element_type = "Metal (Post-Transition)";
+				boiling_point = "2467";
+				electronegativity = "1.61";
+				block_type = "p-block";
+				melting_point = "660";
+			}
+			else if( atomic_name == "SILICON"){
+				atomic_number = 14;
+				symbol = "Si";
+				density = 2.33;
+				state = "Solid";
+				mass = 28.085;
+				charge = "+4, -4";
+				shell_type = 3;
+				atomic_radii = 110;
+				atomic_color = "Gray";		
+				electron_distribution = "2-8-4";
+				no_of_neutrons = 14;
+				electronic_configuration = "[Ne]3s<sup>2</sup>3p<sup>2</sup>";
+				group_no = 14;
+				period_no = 3;
+				valence_electrons = 4;
+				element_type = "Metalloid";
+				boiling_point = "2355";
+				electronegativity = "1.9";
+				block_type = "p-block";
+				melting_point = "1410";
+			}
+			else if( atomic_name == "PHOSPHORUS"){
+				atomic_number = 15;
+				symbol = "P";
+				density = 1.82;
+				state = "Solid";
+				mass = 30.974;
+				charge = "+5, +3, -3";
+				shell_type = 3;
+				atomic_radii = 100;
+				atomic_color = "Colourless";		
+				electron_distribution = "2-8-5";
+				no_of_neutrons = 16;
+				electronic_configuration = "[Ne]3s<sup>2</sup>3p<sup>3</sup>";
+				group_no = 15;
+				period_no = 3;
+				valence_electrons = 5;
+				element_type = "Non-metal";
+				boiling_point = "280";
+				electronegativity = "2.19";
+				block_type = "p-block";
+				melting_point = "44";
+			}
+			else if( atomic_name == "SULFUR"){
+				atomic_number = 16;
+				symbol = "S";
+				state = "Solid";
+				mass = 32.06;
+				shell_type = 3;
+				electron_distribution = "2-8-6";
+				group_no = 16;
+				period_no = 3;
+				valence_electrons = 6;
+				element_type = "Non-metal";
+				electronic_configuration = "[Ne]3s<sup>2</sup>3p<sup>4</sup>";
+				boiling_point = "445";
+				electronegativity = "2.58";
+				melting_point = "113";
+				density = 1.82;				
+				charge = "+6, +4, +2, -2";
+				atomic_radii = 100;
+				atomic_color = "Colourless";			
+				no_of_neutrons = 16;		
+				block_type = "p-block";
+			}
+			else if( atomic_name == "CHLORINE"){
+				atomic_number = 17;
+				symbol = "Cl";
+				density = 3.21;
+				state = "Gas";
+				mass = 35.45;
+				charge = "+7, +5, +3, +1, -1";
+				shell_type = 3;
+				atomic_radii = 100;
+				atomic_color = "Yellow";		
+				electron_distribution = "2-8-7";
+				no_of_neutrons = 18;
+				electronic_configuration = "[Ne]3s<sup>2</sup>3p<sup>5</sup>";
+				group_no = 17;
+				period_no = 3;
+				valence_electrons = 7;
+				element_type = "Nonmetal";
+				boiling_point = "-35";
+				electronegativity = "3.16";
+				block_type = "p-block";
+				melting_point = "-101";
+			}
+			else if( atomic_name == "ARGON"){
+				atomic_number = 18;
+				symbol = "Ar";
+				density = 0.86;
+				state = "Gas";
+				mass = 39.948;
+				charge = "0";
+				shell_type = 3;
+				atomic_radii = 71;
+				atomic_color = "Colourless";		
+				electron_distribution = "2-8-8";
+				no_of_neutrons = 22;
+				electronic_configuration = "[Ne]3s<sup>2</sup>3p<sup>6</sup>";
+				group_no = 18;
+				period_no = 3;
+				valence_electrons = 8;
+				element_type = "Nonmetal (Noble Gas)";
+				boiling_point = "-186";
+				electronegativity = "no data";
+				block_type = "p-block";
+				melting_point = "-189";
+			}
+			else if( atomic_name == "POTASSIUM"){
+				atomic_number = 19;
+				symbol = "K";
+				density = 1.78;
+				state = "Solid";
+				mass = 35.098;
+				charge = "+1";
+				shell_type = 4;
+				atomic_radii = 220;
+				atomic_color = "Silver";		
+				electron_distribution = "2-8-8-1";
+				no_of_neutrons = 20;
+				electronic_configuration = "[Ar]4s<sup>1</sup>";
+				group_no = 1;
+				period_no = 4;
+				valence_electrons = 1;
+				element_type = "Metal (Alkali)";
+				boiling_point = "774";
+				electronegativity = "0.82";
+				block_type = "s-block";
+				melting_point = "64";
+			}
+			else if( atomic_name == "CALCIUM"){
+				atomic_number = 20;
+				symbol = "Ca";
+				state = "Solid";
+				mass = 40.078;
+				shell_type = 4;
+				electron_distribution = "2-8-8-2";
+				group_no = 2;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Alkaline)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>";
+				boiling_point = "1484";
+				electronegativity = "1";
+				melting_point = "839";
+				density = 1.55;				
+				charge = "+2";
+				atomic_radii = 180;
+				atomic_color = "Silver";			
+				no_of_neutrons = 20;		
+				block_type = "s-block";
+			}
+			else if( atomic_name == "SCANDIUM"){
+				atomic_number = 21;
+				symbol = "Sc";
+				state = "Solid";
+				mass = 44.956;
+				shell_type = 4;
+				electron_distribution = "2-8-9-2";
+				group_no = 3;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>1</sup>";
+				boiling_point = "2832";
+				electronegativity = "1.36";
+				melting_point = "1539";
+				density = 3;				
+				charge = "+3";
+				atomic_radii = 160;
+				atomic_color = "Silver";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "TITANIUM"){
+				atomic_number = 22;
+				symbol = "Ti";
+				state = "Solid";
+				mass = 47.867;
+				shell_type = 4;
+				electron_distribution = "2-8-10-2";
+				group_no = 4;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>2</sup>";
+				boiling_point = "3287";
+				electronegativity = "1.54";
+				melting_point = "1539";
+				density = 4.54;				
+				charge = "+4";
+				atomic_radii = 140;
+				atomic_color = "Silver";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "VANADIUM"){
+				atomic_number = 23;
+				symbol = "V";
+				state = "Solid";
+				mass = 50.942;
+				shell_type = 4;
+				electron_distribution = "2-8-11-2";
+				group_no = 5;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>3</sup>";
+				boiling_point = "3287";
+				electronegativity = "1.54";
+				melting_point = "1539";
+				density = 4.54;				
+				charge = "+5";
+				atomic_radii = 140;
+				atomic_color = "Silver";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "CHROMIUM"){
+				atomic_number = 24;
+				symbol = "Cr";
+				state = "Solid";
+				mass = 51.996;
+				shell_type = 4;
+				electron_distribution = "2-8-13-1";
+				group_no = 6;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>5</sup>";
+				boiling_point = "2672";
+				electronegativity = "1.66";
+				melting_point = "1857";
+				density = 7.19;				
+				charge = "+6, +3";
+				atomic_radii = 140;
+				atomic_color = "Silver";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "MANGANESE"){
+				atomic_number = 25;
+				symbol = "Mn";
+				state = "Solid";
+				mass = 54.938;
+				shell_type = 4;
+				electron_distribution = "2-8-13-2";
+				group_no = 7;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>5</sup>";
+				boiling_point = "1962";
+				electronegativity = "1.55";
+				melting_point = "1857";
+				density = 7.43;				
+				charge = "+7, +4, +2";
+				atomic_radii = 140;
+				atomic_color = "Silver";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "IRON"){
+				atomic_number = 26;
+				symbol = "Fe";
+				state = "Solid";
+				mass = 55.845;
+				shell_type = 4;
+				electron_distribution = "2-8-14-2";
+				group_no = 8;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>6</sup>";
+				boiling_point = "2750";
+				electronegativity = "1.83";
+				melting_point = "1535";
+				density = 7.87;				
+				charge = "+6, +3, +2";
+				atomic_radii = 140;
+				atomic_color = "Gray";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "COBALT"){
+				atomic_number = 27;
+				symbol = "Co";
+				state = "Solid";
+				mass = 58.933;
+				shell_type = 4;
+				electron_distribution = "2-8-15-2";
+				group_no = 9;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>7</sup>";
+				boiling_point = "2870";
+				electronegativity = "1.88";
+				melting_point = "1495";
+				density = 8.9;				
+				charge = "+3, +2";
+				atomic_radii = 135;
+				atomic_color = "Gray";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "NICKEL"){
+				atomic_number = 28;
+				symbol = "Ni";
+				state = "Solid";
+				mass = 58.693;
+				shell_type = 4;
+				electron_distribution = "2-8-16-2";
+				group_no = 10;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>8</sup>";
+				boiling_point = "2732";
+				electronegativity = "1.91";
+				melting_point = "1453";
+				density = 8.9;				
+				charge = "+2";
+				atomic_radii = 135;
+				atomic_color = "Gray";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "COPPER"){
+				atomic_number = 29;
+				symbol = "Cu";
+				state = "Solid";
+				mass = 63.546;
+				shell_type = 4;
+				electron_distribution = "2-8-18-1";
+				group_no = 11;
+				period_no = 4;
+				valence_electrons = 1;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>10</sup>";
+				boiling_point = "2567";
+				electronegativity = "1.9";
+				melting_point = "1083";
+				density = 8.96;				
+				charge = "+2";
+				atomic_radii = 135;
+				atomic_color = "Copper";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			else if( atomic_name == "ZINC"){
+				atomic_number = 30;
+				symbol = "Zn";
+				state = "Solid";
+				mass = 65.38;
+				shell_type = 4;
+				electron_distribution = "2-8-18-2";
+				group_no = 12;
+				period_no = 4;
+				valence_electrons = 2;
+				element_type = "Metal (Transition)";
+				electronic_configuration = "[Ar]4s<sup>2</sup>3d<sup>10</sup>";
+				boiling_point = "907";
+				electronegativity = "1.65";
+				melting_point = "420";
+				density = 7.13;				
+				charge = "+2";
+				atomic_radii = 135;
+				atomic_color = "Slate Gray";			
+				no_of_neutrons = 20;		
+				block_type = "d-block";
+			}
+			
+			
+			else{
+			}
+	
+// - - - - - - - Analise abd Assign the values of shell tyoes(KLMNOPQ) 
+//               and electron distribution (2-8-18-32-32-18-8)			 
+			 if( shell_type == 1){
+			 	shell_cofiguration = "K";
+			 	shell_electron_distribution = "2"
+			 }
+			 else if( shell_type == 2){
+			 	shell_cofiguration = "K, L";
+			 	shell_electron_distribution = "2-8"
+			 }
+			 else if( shell_type == 3){
+				 shell_cofiguration = "K, L, M";
+				 shell_electron_distribution = "2-8-18"
+			 }
+			 else if( shell_type == 4){
+				 shell_cofiguration = "K, L, M, N";
+				 shell_electron_distribution = "2-8-18-32";
+			 }
+			 else if( shell_type == 5){
+				 shell_cofiguration = "K, L, M, N, O";
+				 shell_electron_distribution = "2-8-18-32-32";
+			 }
+			 else if( shell_type == 6){
+				 shell_cofiguration = "K, L, M, N, O, P";
+				 shell_electron_distribution = "2-8-18-32-32-18";
+			 }
+			 else{
+			 	shell_cofiguration = "K, L, M, N, O, P, Q";
+			 	shell_electron_distribution = "2-8-18-32-32-18-8"
+			 }
+			 
+			 
+//---------------- Store the all details of an element in a Array
+			var return_array = [x, symbol, atomic_number, mass, charge, valence_electrons, atomic_number, atomic_number, atomic_color,// 8
+			block_type, group_no, period_no, shell_type, shell_cofiguration, shell_electron_distribution, electron_distribution,// 7
+			state, density, melting_point, boiling_point, element_type, atomic_radii, electronic_configuration, electronegativity, no_of_neutrons]//9			 
+			return return_array;
+			
+		}
+	
+	
+	</script>
+	
+</body>
+</html>
