@@ -8,9 +8,9 @@ I will share my Python codes on the behalf of daily basis.
 
 [Machine Learning](https://drive.google.com/file/d/1Qn8-Wxoz10i_jD2ueiCgNxJ07_CNKIye/view?usp=drivesdk)
 
-[Python]
+<!-- [Python] ->
 
-[Java]
+<!-- [Java] -->
 
 
 
