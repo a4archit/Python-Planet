@@ -8,6 +8,12 @@ I will share my Python codes on the behalf of daily basis.
 
 [Machine Learning](https://drive.google.com/file/d/1Qn8-Wxoz10i_jD2ueiCgNxJ07_CNKIye/view?usp=drivesdk)
 
+[MLOPs](https://github.com/a4archit/Python-Planet/blob/main/MLOPs.pdf)
+
+[Generative AI](https://github.com/a4archit/Python-Planet/blob/main/GenAI.pdf)
+
+[Agentic AI](https://github.com/a4archit/Python-Planet/blob/main/Agentic%20AI.pdf)
+
 <!-- [Python] ->
 
 <!-- [Java] -->
