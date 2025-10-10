@@ -446,6 +446,6 @@ def get_github_users_profile_dataframe(
 
 
 if __name__ == "__main__":
-    # print(user_profile_html_files_to_csv("E:\\Python\\Data Collection\\Users", end_at_file=6, file_starting_no=4))
-    get_github_users_profile_dataframe(['V-PRAMOD-REDDY', 'manurajtm7', 'Melto007'][1:])
+   get_github_users_profile_dataframe(['V-PRAMOD-REDDY', 'manurajtm7', 'Melto007'][1:])
+
 
