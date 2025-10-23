@@ -1,3 +1,4 @@
+# dependencies
 import requests
 import json
 from bs4 import BeautifulSoup
@@ -42,3 +43,4 @@ class YouTubeDex:
 
 if __name__ == "__main__":
     tseries_data = YouTubeDex.get_json_data("TSeriesBhaktiSagar")
+
