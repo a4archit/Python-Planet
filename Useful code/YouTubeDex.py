@@ -32,7 +32,8 @@ class YouTubeDex:
         soup = BeautifulSoup(response.text, 'html.parser')
         # fetching json content
         json_str = soup.find_all('script')[24].text.split(" = ")[1].replace(';','') # this statement may be generate any error in future
-        
+
+        # condition: if user give persmission to save content
         if save:
             # saving json content
             with open(file_name,'w', encoding='utf-8') as file:
@@ -43,4 +44,5 @@ class YouTubeDex:
 
 if __name__ == "__main__":
     tseries_data = YouTubeDex.get_json_data("TSeriesBhaktiSagar")
+
 
