@@ -82,6 +82,7 @@ def clean_user_choice(user_choice):
 
 
 
+# demo
 if __name__ == "__main__":
     
     game = TicTacToe(mode='comp')
