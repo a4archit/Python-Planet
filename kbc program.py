@@ -67,6 +67,7 @@ if(permission.strip() in permission_list_yes ):# main code block
             uscore *= 10
       else:
          print("wrong answer")
+         # another condition
          if(uscore == 0):
             print("\nWarning: Be carefull!")
          else:
