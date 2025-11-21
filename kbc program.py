@@ -57,7 +57,6 @@ if(permission.strip() in permission_list_yes ):# main code block
             uans = int(input(f"{uans} is not in option list.\nEnter a right option(1,2,3,4): "))
       except ValueError:
          print("You don't give 1,2,3 or 4 so that your score is '0' in this question.")
-        # uscore-=1000 if uscore==0 else uscore == (uscore/10)
       
       if(ques[qno][uans] == ques[qno][-1]):
          print("This is right answer")
